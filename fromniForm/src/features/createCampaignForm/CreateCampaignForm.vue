@@ -17,6 +17,9 @@
                 <!-- <v-btn color="blue-darken-1" @click="loadCampaign(campaign.name)" variant="text">
                     Загрузить
                 </v-btn> -->
+                <!-- <v-btn color="red-darken-1" @click="deleteCampaign(campaign.name)" variant="text">
+                    Удалить
+                </v-btn> -->
                 <v-btn color="red-darken-1" @click="clearCampaign()" variant="text">
                     Очистить
                 </v-btn>
@@ -46,6 +49,7 @@
             console.log(campaign);
         }))
     }
+    const deleteCampaign = (data: string) => api.default.deleteRequest(data);
     
     const emit = defineEmits(['remountForm']);
     const clearCampaign = () => {

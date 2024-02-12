@@ -5,7 +5,7 @@ export class Form {
     @PrimaryColumn()
     id: number
 
-    @Column()
+    @Column({ unique: true })
     name: string     
     
     @Column({     type: "json",     array: true})

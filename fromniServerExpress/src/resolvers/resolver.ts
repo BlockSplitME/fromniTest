@@ -22,8 +22,8 @@ export const addCampaign = async (req, res) => {
 }
 
 export const getCampaign = async(req, res) => {
+    const name = req.params.name
     const form = AppDataSource.getRepository(Form);
-    const {name} = req.body
     try {
       const data = await form.find({where: {
         name: name
@@ -32,4 +32,14 @@ export const getCampaign = async(req, res) => {
     } catch(error) {
         console.error('Ошибка подключения к базе данных:', error);
     }
+}
+
+export const deleteCampaign = async(req, res) => {
+  const name = req.params.name
+  const form = AppDataSource.getRepository(Form);
+  try {
+    form.delete({name: name})
+  } catch(error) {
+    console.error('Ошибка подключения к базе данных:', error);
+  }
 }

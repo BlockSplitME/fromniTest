@@ -14,15 +14,13 @@ app.use(
   })
 );
 
-// Подключение к базе данных
 AppDataSource.initialize()
-    .then(() => {
-        // here you can start to work with your database
-    })
+    .then(() => {})
     .catch((error) => console.log(error))
 
-app.post('/getCampaign', resolvers.getCampaign);
+app.get('/getCampaign/:name', resolvers.getCampaign);
 app.post('/createCampaign', resolvers.addCampaign);
+app.delete('/deleteCampaign/:name', resolvers.deleteCampaign)
 
 app.listen(8050, () => {
   console.log('Сервер запущен на порту 8050');
